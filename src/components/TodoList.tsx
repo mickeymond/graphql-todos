@@ -19,9 +19,13 @@ const TodoList: React.FC = () => {
     <List
       size="large"
       dataSource={data.todos}
-      renderItem={(item: Todo) => <List.Item actions={[
-        <Link to={`/todos/${item.id}/edit`}><Icon type="edit" theme="filled" /></Link>
-      ]}>{item.type}</List.Item>}
+      renderItem={(item: Todo) => (
+        <List.Item actions={[
+          <Link to={`/todos/${item.id}/edit`}><Icon type="edit" theme="filled" /></Link>
+        ]}>
+          <Link to={`/todos/${item.id}`}>{item.type}</Link>
+        </List.Item>
+      )}
     />
   );
 }

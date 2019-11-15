@@ -6,6 +6,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 import Home from './components/Home';
+import ViewTodo from './components/ViewTodo';
 import EditTodo from './components/EditTodo';
 
 const client = new ApolloClient({
@@ -21,6 +22,7 @@ const App: React.FC = () => {
             <h1>GraphQL Todos</h1>
             <Switch>
               <Route path="/" exact component={Home} />
+              <Route path="/todos/:id" exact component={ViewTodo} />
               <Route path="/todos/:id/edit" exact component={EditTodo} />
             </Switch>
           </section>

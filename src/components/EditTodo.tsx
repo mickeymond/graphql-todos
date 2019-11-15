@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { useParams, useHistory } from 'react-router-dom';
 
-import { Input, Spin, Alert } from 'antd/es';
+import { Input, Spin, Alert, Button } from 'antd/es';
 
 import { FETCH_TODO } from '../queries';
 import { UPDATE_TODO } from '../mutations';
@@ -21,16 +21,22 @@ const EditTodo: React.FC = (props) => {
 
 
   return (
-    <Input.Search
-      style={{ width: '400px' }}
-      placeholder="Enter Todo"
-      enterButton="Update Todo"
-      defaultValue={data.todo.type}
-      onSearch={(value, event) => {
-        updateTodo({ variables: { id: data.todo.id, type: value } });
-        history.push('/');
-      }}
-    />
+    <React.Fragment>
+      <Input.Search
+        style={{ width: '400px' }}
+        placeholder="Enter Todo"
+        enterButton="Update Todo"
+        defaultValue={data.todo.type}
+        onSearch={(value, event) => {
+          updateTodo({ variables: { id: data.todo.id, type: value } });
+          history.push('/');
+        }}
+      />
+      <br />
+      <Button type="primary" onClick={e => {
+        history.goBack();
+      }}>Back</Button>
+    </React.Fragment>
   );
 }
 
