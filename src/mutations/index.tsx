@@ -8,3 +8,12 @@ export const ADD_TODO = gql`
     }
   }
 `;
+
+export const UPDATE_TODO = gql`
+  mutation updateTodo($id: String!, $type: String!) {
+    updateTodo(id: $id, type: $type) {
+      id
+      type
+    }
+  }
+`;
